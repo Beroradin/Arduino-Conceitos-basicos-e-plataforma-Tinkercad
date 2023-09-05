@@ -1,0 +1,58 @@
+// Definir os pinos do sensor ultrassônico
+const int triggerPin = 2;
+const int echoPin = 3;
+
+// Definir os pinos dos LEDs
+const int ledVerde = 4;
+const int ledAmarelo = 5;
+const int ledVermelho = 6;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(triggerPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(ledVerde, OUTPUT);
+  pinMode(ledAmarelo, OUTPUT);
+  pinMode(ledVermelho, OUTPUT);
+}
+
+void loop() {
+  // Enviar pulso de trigger
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+
+  // Medir o tempo de eco
+  long duration = pulseIn(echoPin, HIGH);
+
+  // Converter tempo em distância
+  float distance = duration * 0.034 / 2;
+
+  // Exibir a distância no monitor serial
+  Serial.print("Distancia: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  // Controlar LEDs com base na distância
+  if (distance > 200 && distance <= 300) {
+    digitalWrite(ledVerde, HIGH);
+    digitalWrite(ledAmarelo, LOW);
+    digitalWrite(ledVermelho, LOW);
+  } else if (distance > 100 && distance <= 200) {
+    digitalWrite(ledVerde, HIGH);
+    digitalWrite(ledAmarelo, HIGH);
+    digitalWrite(ledVermelho, LOW);
+  } else if (distance > 0 && distance <= 100) {
+    digitalWrite(ledVerde, HIGH);
+    digitalWrite(ledAmarelo, HIGH);
+    digitalWrite(ledVermelho, HIGH);
+  } else {
+    digitalWrite(ledVerde, LOW);
+    digitalWrite(ledAmarelo, LOW);
+    digitalWrite(ledVermelho, LOW);
+  }
+  delay(100);
+  
+}
