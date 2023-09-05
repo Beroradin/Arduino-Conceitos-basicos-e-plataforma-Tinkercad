@@ -1,0 +1,35 @@
+// Definir os pinos do sensor ultrassônico
+const int triggerPin = 2;
+const int echoPin = 3;
+
+void setup() {
+  // Inicializar a comunicação serial
+  Serial.begin(9600);
+  
+  // Configurar os pinos do sensor ultrassônico
+  pinMode(triggerPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+}
+
+void loop() {
+  // Enviar pulso de 10μs no pino de trigger
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+  
+  // Medir o tempo entre o envio e o recebimento do sinal
+  long duration = pulseIn(echoPin, HIGH);
+  
+  // Converter o tempo em microssegundos para centímetros
+  float distance = duration * 0.034 / 2;
+  
+  // Exibir a distância no monitor serial
+  Serial.print("Distancia: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+  
+  // Aguardar um pouco antes da próxima medição
+  delay(1000);
+}
