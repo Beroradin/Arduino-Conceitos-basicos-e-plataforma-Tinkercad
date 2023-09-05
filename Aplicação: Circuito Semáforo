@@ -1,0 +1,76 @@
+// Definir os pinos dos LEDs para cada semáforo
+const int semaforoRua1Vermelho = 2;
+const int semaforoRua1Amarelo = 3;
+const int semaforoRua1Verde = 4;
+const int semaforoRua2Vermelho = 5;
+const int semaforoRua2Amarelo = 6;
+const int semaforoRua2Verde = 7;
+
+// Definir os pinos do LED para o semáforo de pedestre
+const int semaforoPedestreVermelho = 8;
+const int semaforoPedestreVerde = 9;
+
+void setup() {
+  // Configurar os pinos como saídas
+  pinMode(semaforoRua1Vermelho, OUTPUT);
+  pinMode(semaforoRua1Amarelo, OUTPUT);
+  pinMode(semaforoRua1Verde, OUTPUT);
+  pinMode(semaforoRua2Vermelho, OUTPUT);
+  pinMode(semaforoRua2Amarelo, OUTPUT);
+  pinMode(semaforoRua2Verde, OUTPUT);
+  pinMode(semaforoPedestreVermelho, OUTPUT);
+  pinMode(semaforoPedestreVerde, OUTPUT);
+  
+  digitalWrite(semaforoPedestreVermelho, HIGH);
+  
+}
+
+void loop() {
+    
+    // Semáforos para as ruas
+    digitalWrite(semaforoRua1Vermelho, LOW);
+    digitalWrite(semaforoRua1Amarelo, LOW);
+    digitalWrite(semaforoRua1Verde, HIGH);
+    digitalWrite(semaforoRua2Vermelho, HIGH);
+    digitalWrite(semaforoRua2Amarelo, LOW);
+    digitalWrite(semaforoRua2Verde, LOW);
+    delay(5000);//5 segundos
+    
+    digitalWrite(semaforoRua1Vermelho, LOW);
+    digitalWrite(semaforoRua1Amarelo, HIGH);
+    digitalWrite(semaforoRua1Verde, LOW);
+    digitalWrite(semaforoRua2Vermelho, HIGH);
+    digitalWrite(semaforoRua2Amarelo, LOW);
+    digitalWrite(semaforoRua2Verde, LOW);
+    delay(2000);//2 segundos
+  
+    digitalWrite(semaforoRua1Vermelho, HIGH);
+    digitalWrite(semaforoRua1Amarelo, LOW);
+    digitalWrite(semaforoRua1Verde, LOW);
+  	digitalWrite(semaforoRua2Vermelho, HIGH);
+    digitalWrite(semaforoRua2Amarelo, LOW);
+    digitalWrite(semaforoRua2Verde, LOW);
+  	digitalWrite(semaforoPedestreVermelho, LOW);
+  	digitalWrite(semaforoPedestreVerde, HIGH);
+  	delay(7000);//7 segundos
+    
+    digitalWrite(semaforoRua1Vermelho, HIGH);
+    digitalWrite(semaforoRua1Amarelo, LOW);
+    digitalWrite(semaforoRua1Verde, LOW);
+    digitalWrite(semaforoRua2Vermelho, LOW);
+    digitalWrite(semaforoRua2Amarelo, LOW);
+    digitalWrite(semaforoRua2Verde, HIGH);
+  	digitalWrite(semaforoPedestreVermelho, HIGH);
+  	digitalWrite(semaforoPedestreVerde, LOW);
+    delay(5000);//5 segundos
+    
+    digitalWrite(semaforoRua1Vermelho, HIGH);
+    digitalWrite(semaforoRua1Amarelo, LOW);
+    digitalWrite(semaforoRua1Verde, LOW);
+    digitalWrite(semaforoRua2Vermelho, LOW);
+    digitalWrite(semaforoRua2Amarelo, HIGH);
+    digitalWrite(semaforoRua2Verde, LOW);
+    delay(2000);//2 segundos
+    
+  
+}
